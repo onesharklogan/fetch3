@@ -20,7 +20,14 @@ function generateImage() {
         .then(response => response.json())
         .then(responseJson =>
             generateHtml(responseJson))
-        .catch(error => alert('Breed not found!'));
+        .catch(error => errorMessage("Breed was not found"));
+}
+
+function errorMessage(msg) {
+    console.log("error:" + msg);
+    alert(msg);
+    $('#doggie-list').replaceWith(`<ol id="doggie-list"><li>No image available - ` + msg + `</li>
+     </ol>`);
 }
 
 
